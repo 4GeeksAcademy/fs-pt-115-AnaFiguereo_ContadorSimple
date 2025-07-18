@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
 //Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap"
@@ -10,9 +9,16 @@ import '../styles/index.css'
 
 // components
 import Home from './components/Home';
+let counter = 0
+setInterval ( ()=>{
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+      <Home counter={counter}/> 
+    </React.StrictMode>,
+  )
+  counter++
+}, 1000)
+
+//interval = segun el intervalo de tiempo se ejecuta
+
