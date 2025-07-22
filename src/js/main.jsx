@@ -11,6 +11,8 @@ import '../styles/index.css'
 import Home from './components/Home';
 let unitSecond = 0
 let dozenSecond = 0
+let unitMinute = 0
+let dozenMinute = 0
 // setInterval es una funcion de la cual  por cada intervalo de tiempo se va a ejecutar lo que le pongamos
 // en este caso sería una función
 
@@ -18,13 +20,31 @@ let dozenSecond = 0
 setInterval ( ()=>{
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-      <Home unitSecond={unitSecond} dozenSecond={dozenSecond}/>  {/* Conectamos el componente Home aquí a main para que salga en la ventana*/}
+      <Home 
+        unitSecond={unitSecond} 
+        dozenSecond={dozenSecond}
+        unitMinute={unitMinute}
+        dozenMinute={dozenMinute}
+      />  {/* Conectamos el componente Home aquí a main para que salga en la ventana*/}
     </React.StrictMode>,
   )
   unitSecond ++ ; {/* Supongo que aquí habrá que poner el límite de 9 segundos y que pase al siguiente number.jsx */}
   if (unitSecond >=10) {
+    unitSecond = 0
     dozenSecond++
   }
+  if (dozenSecond >= 6) {
+    dozenSecond = 0
+    unitMinute++
+  }
+  if (unitMinute >= 10) {
+    unitMinute = 0
+    dozenMinute++
+  }
+  if (dozenMinute >= 6) {
+    dozenMinute = 0
+  }
+
 }, 1000)
 
 //Vamos a definir por fin esa constante que hemos estado mencionando todo el tiempo (counter)
